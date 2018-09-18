@@ -10,12 +10,6 @@
                 "description": "This should be a short (10 or fewer characters), but unique string that will be a prefix to all of the resources deployed. For example, if you type in smithcis, your Spark cluster will be called smithcisspark and your Lab VM will be called smithcislab. DO NOT INCLUDE ANY EXTRANEOUS CHARACTERS SUCH AS DASHES, UNDERSCORES, ETC."
             }
         },
-        "workspaceName": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the Azure Databricks workspace to create."
-            }
-        },
         "pricingTier": {
             "type": "string",
             "defaultValue": "premium",
@@ -55,7 +49,7 @@
             "mlStorageResourceId": "[resourceId('Microsoft.Storage/storageAccounts', variables('mlStorageAccountName'))]",
             "sshUserName": "sshuser",
             "sshPassword": "Abc!1234567890",
-            "managedResourceGroupName": "[concat('databricks-rg-', parameters('workspaceName'), '-', uniqueString(parameters('workspaceName'), resourceGroup().id))]"
+            "managedResourceGroupName": "[concat('databricks-rg-', parameters('appName'), '-', uniqueString(parameters('appName'), resourceGroup().id))]"
         },
         "resources": [
             {
@@ -125,7 +119,7 @@
             },
             {
                 "type": "Microsoft.Databricks/workspaces",
-                "name": "[parameters('workspaceName')]",
+                "name": "[parameters('appName')]",
                 "location": "[parameters('location')]",
                 "apiVersion": "2018-04-01",
                 "sku": {
@@ -151,7 +145,7 @@
             },
             "workspace": {
                 "type": "object",
-                "value": "[reference(resourceId('Microsoft.Databricks/workspaces', parameters('workspaceName')))]"
+                "value": "[reference(resourceId('Microsoft.Databricks/workspaces', parameters('appName')))]"
             }
         }
     }
