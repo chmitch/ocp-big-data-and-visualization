@@ -157,7 +157,7 @@
                     Copyright &copy; <%= DateTime.Today.Year.ToString() %>,  |  <a href="#">AdventureWorks Travel, inc.</a>, all rights reserved
                 </div>
                 <div class="col-md-4">
-                    <a href="http://www.wunderground.com/" target="_blank"><img src="images/wundergroundLogo_4c_rev_horz_small.png" alt="Weather Underground" /></a>
+                    <a href="http://www.darksky.com/" target="_blank"><img src="images/darksky-sm.png" alt="Dark Sky" /></a>
                 </div>
             </div>
         </div>
